@@ -37,6 +37,42 @@ cd SmartCommunities/grafana-9.3.6_E_DB1/
 
   Open up your browser under `localhost:3000` and login with default credentials `admin` `admin`. You can skip "new passwords" step
 
+## How to setup data sources
+For now, to set up currently existing data sources you need to install several plugins. With a running Grafana server go to these urls and click `install`:
+- [http://localhost:3000/plugins/marcusolsson-json-datasource](http://localhost:3000/plugins/marcusolsson-json-datasource)
+- [http://localhost:3000/plugins/yesoreyeram-infinity-datasource](http://localhost:3000/plugins/yesoreyeram-infinity-datasource)
+
+<details>
+ <summary>Configuring other existing data sources</summary>
+
+ To configure other existing data sources, go the data sources tab
+<img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/77c768cb-f05b-41e4-bf38-1e96055f87f9" width=75% height=75%>
+
+Some data sources requires plugins (probably all of configured by Dataskope team). If you see a data source with a default icon, you need to install a plugin
+<details>
+ <summary>Example</summary>
+ <img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/aa7b725a-9e52-46c6-84a8-479a9a02411b" width=75% height=75%>
+</details>
+
+Unfortunately, there is no way to install the missing plugin with a click of a button. The easiest way to do it is to remember the name of the plugin
+
+<img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/34c94df1-e1d5-462d-bc5c-86be1776225f" width=75% height=75%>
+
+Then go to `Plugins` tab
+
+<img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/e371c4bd-9bd2-4055-980f-4b8529f012c9" width=75% height=75%>
+
+Search for the plugin by the name. Full name of the plugin is displayed as a link
+
+<img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/a8678012-eb33-401d-85b3-7527823b5e12" width=75% height=75%>
+
+Finally install it
+
+<img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/6feb8dd9-1165-4aa2-a515-37bb81a5b9a4" width=75% height=75%>
+
+</details>
+
+
 # How to fix some errors
 
 ## Dashboard problems
@@ -47,7 +83,7 @@ You might face this error message if open a dashboard for the first time
 > [!NOTE]
 > The name of the plugin might be different, in this case it is `smartcomm-multiplelinechart-panel`
 
-<img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/83899e5f-c21a-4097-8b0b-eb12192bf896" width=50% height=50%>
+<img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/83899e5f-c21a-4097-8b0b-eb12192bf896" width=75% height=75%>
 
 Dataskope team develops their own plugins, and in order to fix this issue you will need to build their plugins/panel manually. 
 <details>
