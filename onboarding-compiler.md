@@ -11,7 +11,6 @@
   - [Your role in the project](#your-role-in-the-project)
     - [Training](#training)
     - [Active Development](#active-development)
-    - [Rules of Conduct](#rules-of-conduct)
 
 ## What is SAGittarius?
 
@@ -89,8 +88,14 @@ Here follows a list of good resources to learn:
 - [Docs.rs](https://docs.rs)
 - [The Rust Book](https://doc.rust-lang.org/book/)
 - [The Rustonomicon](https://doc.rust-lang.org/nomicon/)
-- [The Nomnomicon](https://tfpk.github.io/nominomicon/introduction.html)
+- [The Nominomicon](https://tfpk.github.io/nominomicon/introduction.html)
 
 ### Active Development
 
-### Rules of Conduct
+Your main job will be to expand on the compiler functionality and develop the new compiler backend. You will be working together with Antonino on such task.
+
+You will be expected to:
+- Write code that is easy to read and understand.
+- Compile accurate documentation when necessary.
+- Respect the PR workflow.
+- Communicate whenever you're stuck or need help. 
