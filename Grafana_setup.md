@@ -1,8 +1,19 @@
+# Grafana setup
+
+- [Install necessary dependencies](#install-necessary-dependencies)
 - [How to setup Grafana](#how-to-setup-grafana)
+  - [How to setup data sources](#how-to-setup-data-sources)
 - [How to fix some errors](#how-to-fix-some-errors)
-  * [Dashboard problems](#dashboard-problems)
-    + [Panel not found](#panel-not-found)
-    + [Can't load/edit dashboard JSON](#cant-loadedit-dashboard-json)
+  - [Dashboard problems](#dashboard-problems)
+    - [Panel not found](#panel-not-found)
+    - [Can't load/edit dashboard JSON](#cant-loadedit-dashboard-json)
+
+# Install necessary dependencies
+```bash
+sudo apt update && sudo apt install unzip zip npm
+sudo npm install -g yarn node@19
+```
+
 # How to setup Grafana
 
 1. Clone the Grafana [repository](https://github.com/Dataskop/SmartCommunities)
