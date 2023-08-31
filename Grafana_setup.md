@@ -47,11 +47,14 @@ You might face this error message if open a dashboard for the first time
 > [!NOTE]
 > The name of the plugin might be different, in this case it is `smartcomm-multiplelinechart-panel`
 
-![Screenshot 2023-08-31 191828](https://github.com/bobokrut/Sag-Onboarding/assets/45918782/83899e5f-c21a-4097-8b0b-eb12192bf896)
+<img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/83899e5f-c21a-4097-8b0b-eb12192bf896" width=50% height=50%>
 
 Dataskope team develops their own plugins, and in order to fix this issue you will need to build their plugins/panel manually. 
-
-1. In the `SmartCommunities` repo navigate to `grafana-9.3.6_E_DB1/data/plugins/`
+<details>
+ 
+ <summary>Solution</summary>
+ 
+ 1. In the `SmartCommunities` repo navigate to `grafana-9.3.6_E_DB1/data/plugins/`
 ```bash
 cd grafana-9.3.6_E_DB1/data/plugins/
 ```
@@ -69,27 +72,35 @@ yarn install && yarn dev --no-watch
 4. Verify that everything works
 Restart the server. Then go to the dashboard and if error is gone then you are good to go. If not, please contact Egor
 
+</details>
+
 ### Can't load/edit dashboard JSON
-If loading of the json file takes forever you might nned to add monaco editor to the current branch. 
-1. Verify that monaco editor is missing
-    1. Navigate to the `public/lib/`
-    ```bash
-    cd public/lib/
-    ```
-    2. List directories
-    ```bash
-    ls
-    ```
-    If you don't see `monaco` directory then procced to the next step. If it's there then you have a different problem🤷
+<details>
+ 
+ <summary>Solution</summary>
+ 
+ If loading of the json file takes forever you might nned to add monaco editor to the current branch. 
+ 1. Verify that monaco editor is missing
+     1. Navigate to the `public/lib/`
+     ```bash
+     cd public/lib/
+     ```
+     2. List directories
+     ```bash
+     ls
+     ```
+     If you don't see `monaco` directory then procced to the next step. If it's there then you have a different problem🤷
+ 
+ 2. Download the monaco editor
+ You can the `monaco` editor from the other branches (e.g. `feature_extremeValues`), however you download it from my google drive as a `zip` file and unzip it. (you need to be in the `public/lib/` directory)
+ 
+ ```bash
+ wget "https://docs.google.com/uc?export=download&id=1nfxchDda2NOgK5bq-O9oWgE3hb1SbOBX" -O monaco.zip
+ unzip monaco.zip
+ ```
+ > [!NOTE]
+ > In case you don't have access to the file please contact Egor
+ 
+ 3. Restart the server
 
-2. Download the monaco editor
-You can the `monaco` editor from the other branches (e.g. `feature_extremeValues`), however you download it from my google drive as a `zip` file and unzip it. (you need to be in the `public/lib/` directory)
-
-```bash
-wget "https://docs.google.com/uc?export=download&id=1nfxchDda2NOgK5bq-O9oWgE3hb1SbOBX" -O monaco.zip
-unzip monaco.zip
-```
-> [!NOTE]
-> In case you don't have access to the file please contact Egor
-
-3. Restart the server
+</details>
