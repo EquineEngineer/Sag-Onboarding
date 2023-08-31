@@ -2,7 +2,7 @@
 - [How to fix some errors](#how-to-fix-some-errors)
   * [Dashboard problems](#dashboard-problems)
     + [Panel not found](#panel-not-found)
-    + [Can't load/edit dashboard JSON](#can-t-load-edit-dashboard-json)
+    + [Can't load/edit dashboard JSON](#cant-loadedit-dashboard-json)
 # How to setup Grafana
 
 1. Clone the Grafana [repository](https://github.com/Dataskop/SmartCommunities)
