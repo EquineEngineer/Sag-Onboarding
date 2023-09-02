@@ -1,8 +1,12 @@
 # Grafana setup
 
+- [Grafana setup](#grafana-setup)
 - [Install necessary dependencies](#install-necessary-dependencies)
 - [How to setup Grafana](#how-to-setup-grafana)
   - [How to setup data sources](#how-to-setup-data-sources)
+    - [St. Pölten](#st-polten)
+    - [IMC](#imc)
+  - [Wrap up](#wrap-up)
 - [How to fix some errors](#how-to-fix-some-errors)
   - [Dashboard problems](#dashboard-problems)
     - [Panel not found](#panel-not-found)
@@ -49,6 +53,7 @@ cd SmartCommunities/grafana-9.3.6_E_DB1/
   Open up your browser under `localhost:3000` and login with default credentials `admin` `admin`. You can skip "new passwords" step
 
 ## How to setup data sources
+### St. Pölten
 For now, to set up currently existing data sources you need to install several plugins. With a running Grafana server go to these urls and click `install`:
 - [http://localhost:3000/plugins/marcusolsson-json-datasource](http://localhost:3000/plugins/marcusolsson-json-datasource)
 - [http://localhost:3000/plugins/yesoreyeram-infinity-datasource](http://localhost:3000/plugins/yesoreyeram-infinity-datasource)
@@ -83,6 +88,23 @@ Finally install it
 
 </details>
 
+### IMC
+For now, we have only one data source (API). To add it you need to install the neccasary [plugin](http://localhost:3000/plugins/marcusolsson-json-datasource). Once it's done, navigate to the data sources menu
+
+<img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/77c768cb-f05b-41e4-bf38-1e96055f87f9" width=75% height=75%>
+
+Click `Add data source` button and select `JSON API` data source
+
+<img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/86edfebe-1999-4dc8-9f62-ad90abe9fc29" width=75% height=75%>
+
+Choose a name and specify `https://data.iiss.at/dataskop/fiwarenosec/v2/entities` as a url, and leave everything else default. You can test if everything works fine by clicking `Explore`, selecting needed data source and specifying some query (e.g. `$.0`). You should get a json response
+
+<img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/a620d580-b867-4a62-80c3-1bec949e55d6" width=75% height=75%>
+
+## Wrap up
+As a small demo you can watch this video just to get the general idea on how to work with Grafana. Pay attenchion on how something can be done and not what can be done this exmaple is not relative to us
+
+[![Video](https://img.youtube.com/vi/EGgtJUjky8w/maxresdefault.jpg)](https://youtu.be/EGgtJUjky8w?si=3BD6cH5Q5Xp9S7DH&t=175)
 
 # How to fix some errors
 
