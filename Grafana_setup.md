@@ -4,7 +4,7 @@
 - [Install necessary dependencies](#install-necessary-dependencies)
 - [How to setup Grafana](#how-to-setup-grafana)
   - [How to setup data sources](#how-to-setup-data-sources)
-    - [St. Pölten](#st-polten)
+    - [St. Pölten](#st-pölten)
     - [IMC](#imc)
   - [Wrap up](#wrap-up)
 - [How to fix some errors](#how-to-fix-some-errors)
