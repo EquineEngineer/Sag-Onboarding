@@ -30,7 +30,7 @@ tar -zxvf grafana-enterprise-9.3.6.linux-amd64.tar.gz
 
 > To install other versions of Grafana, select an appropriate version on the [Grafana website](https://grafana.com/grafana/download) and download a **standalone binary**
 
-3. Copy downloaded binary to the Grafana repository
+3. Copy the downloaded binary to the Grafana repository
 
 ```bash
 cp -r grafana-9.3.6/bin/ SmartCommunities/grafana-9.3.6_E_DB1/
@@ -48,7 +48,7 @@ cd SmartCommunities/grafana-9.3.6_E_DB1/
   Open up your browser under `localhost:3000` and login with default credentials `admin` `admin`. You can skip "new passwords" step
 
 # How to setup Grafana 
-The Grafana repository has a lot of branches, but for now you just need a new local branch (e.g. `imc`)
+The Grafana repository has a lot of branches, but for now, you just need a new local branch (e.g. `imc`)
 
 ## Monaco editor
 At the moment of writing this branch is pretty old, so we need to add one thing - an editor. Some branches have it, such as `develop`, but for `imc` you have to add it manually
@@ -69,15 +69,15 @@ At the moment of writing this branch is pretty old, so we need to add one thing 
 
 ## How to setup data sources
 
-For now, we have only one data source (API). To add it you need to install the neccasary [plugin](http://localhost:3000/plugins/marcusolsson-json-datasource). Once it's done, navigate to the data sources menu
+For now, we have only one data source (API). To add it you need to install the necessary [plugin](http://localhost:3000/plugins/marcusolsson-json-datasource). Once it's done, navigate to the data sources menu
 
 <img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/77c768cb-f05b-41e4-bf38-1e96055f87f9" width=75% height=75%>
 
-Click `Add data source` button and select `JSON API` data source
+Click the `Add data source` button and select `JSON API` data source
 
 <img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/86edfebe-1999-4dc8-9f62-ad90abe9fc29" width=75% height=75%>
 
-Choose a name, specify `https://data.iiss.at/dataskop/fiwarenosec/v2/entities` as a url, and leave everything else default. You can test if everything works fine by clicking `Explore`, selecting needed data source and specifying some query (e.g. `$.0`). You should get a json response
+Choose a name, specify `https://data.iiss.at/dataskop/fiwarenosec/v2/entities` as a url, and leave everything else default. You can test if everything works fine by clicking `Explore`, selecting the needed data source and specifying some query (e.g. `$.0`). You should get a json response
 
 <img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/a620d580-b867-4a62-80c3-1bec949e55d6" width=75% height=75%>
 
@@ -85,7 +85,7 @@ This plugin uses a `JSONPaht` as a selector. See [docs]((https://goessner.net/ar
 
 ## Use case
 
-To demonstarate our use case I created a dashboard that can be imported to the Grafana. To import it, go to [http://localhost:3000/dashboard/import](http://localhost:3000/dashboard/import) and paste the json
+To demonstrate our use case I created a dashboard that can be imported to the Grafana. To import it, go to [http://localhost:3000/dashboard/import](http://localhost:3000/dashboard/import) and paste the json
 
 <details>
   <summary>Dashboard file</summary>
@@ -356,9 +356,9 @@ After it's done, you should see this
 
 <img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/0c574d16-f7af-45af-88b7-737e7df12142" width=75% height=75%>
 
-To futher explore it, press `e` on your keyboard or select `edit` in the dropdown menu (`Test map` above the map). This visualisation should be understandable but in case of the difficulties please contact Egor
+To further explore it, press `e` on your keyboard or select `edit` in the dropdown menu (`Test map` above the map). This visualisation should be understandable but in case of difficulties please contact Egor
 
 # Wrap up
-As a small demo you can watch this video just to get the general idea on how to work with Grafana. Pay attenchion on how something can be done and not what can be done this exmaple is not relative to us
+As a small demo, you can watch this video just to get a general idea of how to work with Grafana. Pay attention to how something can be done and not what can be done this example is not relative to us
 
 [![Video](https://img.youtube.com/vi/EGgtJUjky8w/maxresdefault.jpg)](https://youtu.be/EGgtJUjky8w?si=3BD6cH5Q5Xp9S7DH&t=175)
