@@ -1,24 +1,19 @@
 # Grafana setup
-
 - [Grafana setup](#grafana-setup)
 - [Install necessary dependencies](#install-necessary-dependencies)
+- [How to install Grafana](#how-to-install-grafana)
 - [How to setup Grafana](#how-to-setup-grafana)
+  - [Monaco editor](#monaco-editor)
   - [How to setup data sources](#how-to-setup-data-sources)
-    - [St. Pölten](#st-pölten)
-    - [IMC](#imc)
-  - [Wrap up](#wrap-up)
-- [How to fix some errors](#how-to-fix-some-errors)
-  - [Dashboard problems](#dashboard-problems)
-    - [Panel not found](#panel-not-found)
-    - [Can't load/edit dashboard JSON](#cant-loadedit-dashboard-json)
+  - [Use case](#use-case)
+- [Wrap up](#wrap-up)
 
 # Install necessary dependencies
 ```bash
-sudo apt update && sudo apt install unzip zip npm
-sudo npm install -g yarn node@19
+sudo apt update && sudo apt install unzip
 ```
 
-# How to setup Grafana
+# How to install Grafana
 
 1. Clone the Grafana [repository](https://github.com/Dataskop/SmartCommunities)
 
@@ -52,43 +47,28 @@ cd SmartCommunities/grafana-9.3.6_E_DB1/
 
   Open up your browser under `localhost:3000` and login with default credentials `admin` `admin`. You can skip "new passwords" step
 
+# How to setup Grafana 
+The Grafana repository has a lot of branches, but for now you just need a new local branch (e.g. `imc`)
+
+## Monaco editor
+At the moment of writing this branch is pretty old, so we need to add one thing - an editor. Some branches have it, such as `develop`, but for `imc` you have to add it manually
+
+ 1. Navigate to the `grafana-9.3.6_E_DB1/public/lib`
+ ```bash
+ cd grafana-9.3.6_E_DB1/public/lib
+ ``` 
+ 2. Download the monaco editor
+ ```bash
+ wget "https://docs.google.com/uc?export=download&id=1nfxchDda2NOgK5bq-O9oWgE3hb1SbOBX" -O monaco.zip
+ unzip monaco.zip
+ ```
+ > [!NOTE]
+ > In case you don't have access to the file please contact Egor
+ 
+ 3. Restart the server if it's running
+
 ## How to setup data sources
-### St. Pölten
-For now, to set up currently existing data sources you need to install several plugins. With a running Grafana server go to these urls and click `install`:
-- [http://localhost:3000/plugins/marcusolsson-json-datasource](http://localhost:3000/plugins/marcusolsson-json-datasource)
-- [http://localhost:3000/plugins/yesoreyeram-infinity-datasource](http://localhost:3000/plugins/yesoreyeram-infinity-datasource)
 
-<details>
- <summary>Configuring other existing data sources</summary>
-
- To configure other existing data sources, go the data sources tab
-<img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/77c768cb-f05b-41e4-bf38-1e96055f87f9" width=75% height=75%>
-
-Some data sources requires plugins (probably all of configured by Dataskope team). If you see a data source with a default icon, you need to install a plugin
-<details>
- <summary>Example</summary>
- <img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/aa7b725a-9e52-46c6-84a8-479a9a02411b" width=75% height=75%>
-</details>
-
-Unfortunately, there is no way to install the missing plugin with a click of a button. The easiest way to do it is to remember the name of the plugin
-
-<img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/34c94df1-e1d5-462d-bc5c-86be1776225f" width=75% height=75%>
-
-Then go to `Plugins` tab
-
-<img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/e371c4bd-9bd2-4055-980f-4b8529f012c9" width=75% height=75%>
-
-Search for the plugin by the name. Full name of the plugin is displayed as a link
-
-<img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/a8678012-eb33-401d-85b3-7527823b5e12" width=75% height=75%>
-
-Finally install it
-
-<img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/6feb8dd9-1165-4aa2-a515-37bb81a5b9a4" width=75% height=75%>
-
-</details>
-
-### IMC
 For now, we have only one data source (API). To add it you need to install the neccasary [plugin](http://localhost:3000/plugins/marcusolsson-json-datasource). Once it's done, navigate to the data sources menu
 
 <img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/77c768cb-f05b-41e4-bf38-1e96055f87f9" width=75% height=75%>
@@ -97,79 +77,288 @@ Click `Add data source` button and select `JSON API` data source
 
 <img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/86edfebe-1999-4dc8-9f62-ad90abe9fc29" width=75% height=75%>
 
-Choose a name and specify `https://data.iiss.at/dataskop/fiwarenosec/v2/entities` as a url, and leave everything else default. You can test if everything works fine by clicking `Explore`, selecting needed data source and specifying some query (e.g. `$.0`). You should get a json response
+Choose a name, specify `https://data.iiss.at/dataskop/fiwarenosec/v2/entities` as a url, and leave everything else default. You can test if everything works fine by clicking `Explore`, selecting needed data source and specifying some query (e.g. `$.0`). You should get a json response
 
 <img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/a620d580-b867-4a62-80c3-1bec949e55d6" width=75% height=75%>
 
-## Wrap up
+This plugin uses a `JSONPaht` as a selector. See [docs]((https://goessner.net/articles/JsonPath/))
+
+## Use case
+
+To demonstarate our use case I created a dashboard that can be imported to the Grafana. To import it, go to [http://localhost:3000/dashboard/import](http://localhost:3000/dashboard/import) and paste the json
+
+<details>
+  <summary>Dashboard file</summary>
+  
+  ```json
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Just a sample dashboard to try things out",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 2,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "qAa5U2kIk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "basemap": {
+          "config": {
+            "showLabels": true,
+            "theme": "auto"
+          },
+          "name": "Layer 0",
+          "opacity": 1,
+          "type": "carto"
+        },
+        "controls": {
+          "mouseWheelZoom": true,
+          "showAttribution": true,
+          "showDebug": false,
+          "showMeasure": false,
+          "showScale": false,
+          "showZoom": true
+        },
+        "layers": [
+          {
+            "config": {
+              "showLegend": true,
+              "style": {
+                "color": {
+                  "fixed": "yellow"
+                },
+                "opacity": 0.5,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 3,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "text": {
+                  "field": "name",
+                  "fixed": "",
+                  "mode": "fixed"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "left",
+                  "textBaseline": "bottom"
+                }
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "A"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "POI",
+            "tooltip": true,
+            "type": "markers"
+          }
+        ],
+        "tooltip": {
+          "mode": "details"
+        },
+        "view": {
+          "allLayers": true,
+          "id": "coords",
+          "lastOnly": false,
+          "lat": 41.38278,
+          "layer": "Layer 1",
+          "lon": 2.17694,
+          "padding": 10,
+          "zoom": 11
+        }
+      },
+      "pluginVersion": "9.3.6",
+      "targets": [
+        {
+          "cacheDurationSeconds": 300,
+          "datasource": {
+            "type": "marcusolsson-json-datasource",
+            "uid": "qAa5U2kIk"
+          },
+          "fields": [
+            {
+              "jsonPath": "$[*].address.value.addressRegion",
+              "name": "region"
+            },
+            {
+              "jsonPath": "$[*].address.value.addressCountry",
+              "language": "jsonpath",
+              "name": "country"
+            },
+            {
+              "jsonPath": "$[*].name.value",
+              "language": "jsonpath",
+              "name": "name"
+            },
+            {
+              "jsonPath": "$[*].location.value.coordinates[1]",
+              "language": "jsonpath",
+              "name": "lat"
+            },
+            {
+              "jsonPath": "$[*].location.value.coordinates[0]",
+              "language": "jsonpath",
+              "name": "lon"
+            },
+            {
+              "jsonPath": "$[*].description.value",
+              "language": "jsonpath",
+              "name": "description"
+            }
+          ],
+          "method": "GET",
+          "params": [
+            [
+              "type",
+              "PointOfInterest"
+            ]
+          ],
+          "queryParams": "",
+          "refId": "A",
+          "urlPath": ""
+        }
+      ],
+      "title": "Test map",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "address",
+            "mode": "reduceRow",
+            "reduce": {
+              "include": [
+                "region",
+                "country"
+              ],
+              "reducer": "allValues"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "country": true,
+              "region": true
+            },
+            "indexByName": {
+              "address": 1,
+              "country": 6,
+              "description": 2,
+              "lat": 3,
+              "lon": 4,
+              "name": 0,
+              "region": 5
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "geomap"
+    }
+  ],
+  "schemaVersion": 37,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "IMC",
+  "uid": "BcN3KjAVx",
+  "version": 3,
+  "weekStart": ""
+}
+  ```
+</details>
+
+After it's done, you should see this
+
+<img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/0c574d16-f7af-45af-88b7-737e7df12142" width=75% height=75%>
+
+To futher explore it, press `e` on your keyboard or select `edit` in the dropdown menu (`Test map` above the map). This visualisation should be understandable but in case of the difficulties please contact Egor
+
+# Wrap up
 As a small demo you can watch this video just to get the general idea on how to work with Grafana. Pay attenchion on how something can be done and not what can be done this exmaple is not relative to us
 
 [![Video](https://img.youtube.com/vi/EGgtJUjky8w/maxresdefault.jpg)](https://youtu.be/EGgtJUjky8w?si=3BD6cH5Q5Xp9S7DH&t=175)
-
-# How to fix some errors
-
-## Dashboard problems
-
-### Panel not found
-
-You might face this error message if open a dashboard for the first time
-> [!NOTE]
-> The name of the plugin might be different, in this case it is `smartcomm-multiplelinechart-panel`
-
-<img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/83899e5f-c21a-4097-8b0b-eb12192bf896" width=75% height=75%>
-
-Dataskope team develops their own plugins, and in order to fix this issue you will need to build their plugins/panel manually. 
-<details>
- 
- <summary>Solution</summary>
- 
- 1. In the `SmartCommunities` repo navigate to `grafana-9.3.6_E_DB1/data/plugins/`
-```bash
-cd grafana-9.3.6_E_DB1/data/plugins/
-```
-2. Go to the directory with the same name as the in the error message (in this case it is `smartcomm-multiplelinechart-panel`
-```bash
-cd smartcomm-multiplelinechart-panel
-```
-3. Install and build everything
-```bash
-yarn install && yarn dev --no-watch
-```
-> [!NOTE]
-> You might see some errors during build. You can ignore them unless you can build the plugin (`error Command failed with exit code 1.` might be also fine
-
-4. Verify that everything works
-Restart the server. Then go to the dashboard and if error is gone then you are good to go. If not, please contact Egor
-
-</details>
-
-### Can't load/edit dashboard JSON
-<details>
- 
- <summary>Solution</summary>
- 
- If loading of the json file takes forever you might nned to add monaco editor to the current branch. 
- 1. Verify that monaco editor is missing
-     1. Navigate to the `public/lib/`
-     ```bash
-     cd public/lib/
-     ```
-     2. List directories
-     ```bash
-     ls
-     ```
-     If you don't see `monaco` directory then procced to the next step. If it's there then you have a different problem🤷
- 
- 2. Download the monaco editor
- You can the `monaco` editor from the other branches (e.g. `feature_extremeValues`), however you download it from my google drive as a `zip` file and unzip it. (you need to be in the `public/lib/` directory)
- 
- ```bash
- wget "https://docs.google.com/uc?export=download&id=1nfxchDda2NOgK5bq-O9oWgE3hb1SbOBX" -O monaco.zip
- unzip monaco.zip
- ```
- > [!NOTE]
- > In case you don't have access to the file please contact Egor
- 
- 3. Restart the server
-
-</details>
