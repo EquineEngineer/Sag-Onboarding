@@ -92,7 +92,7 @@ This plugin uses a `JSONPaht` as a selector. See [docs](https://goessner.net/art
 
 ## Use case
 
-To demonstrate our use case I created a dashboard that can be imported to the Grafana. To import it, go to [http://localhost:3000/dashboard/import](http://localhost:3000/dashboard/import) and paste the json. This json is an example of a [compilation target](https://github.com/bobokrut/Sag-Onboarding/blob/main/onboarding-exe.md#grafana-as-a-target) 
+To demonstrate our use case I created a dashboard that can be imported to the Grafana. To import it, go to [http://localhost:3000/dashboard/import](http://localhost:3000/dashboard/import) and paste the json. This json is an example of a [compilation target](https://github.com/bobokrut/Sag-Onboarding/blob/main/onboarding-exe.md#grafana-as-a-target) (**please see the [docs](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/)**)
 
 <details>
   <summary>Dashboard file</summary>
