@@ -1,12 +1,19 @@
 # Grafana setup
+
 - [Grafana setup](#grafana-setup)
+- [Quick demo](#quick-demo)
 - [Install necessary dependencies](#install-necessary-dependencies)
 - [How to install Grafana](#how-to-install-grafana)
 - [How to setup Grafana](#how-to-setup-grafana)
   - [Monaco editor](#monaco-editor)
   - [How to setup data sources](#how-to-setup-data-sources)
   - [Use case](#use-case)
-- [Wrap up](#wrap-up)
+
+# Quick demo
+As a small demo, you can watch this video just to get a general idea of how to work with Grafana. Pay attention to how something can be done and not what can be done since this example is not relative to our project
+
+[![Video](https://img.youtube.com/vi/EGgtJUjky8w/maxresdefault.jpg)](https://youtu.be/EGgtJUjky8w?si=3BD6cH5Q5Xp9S7DH&t=175)
+
 
 # Install necessary dependencies
 ```bash
@@ -69,7 +76,7 @@ At the moment of writing this branch is pretty old, so we need to add one thing 
 
 ## How to setup data sources
 
-For now, we have only one data source (API). To add it you need to install the necessary [plugin](http://localhost:3000/plugins/marcusolsson-json-datasource). Once it's done, navigate to the data sources menu
+For now, we have only one data source (API). To add it you need to install the necessary [plugin](http://localhost:3000/plugins/marcusolsson-json-datasource) (grafana server needs to be running). Once it's done, navigate to the data sources menu
 
 <img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/77c768cb-f05b-41e4-bf38-1e96055f87f9" width=75% height=75%>
 
@@ -81,11 +88,11 @@ Choose a name, specify `https://data.iiss.at/dataskop/fiwarenosec/v2/entities` a
 
 <img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/a620d580-b867-4a62-80c3-1bec949e55d6" width=75% height=75%>
 
-This plugin uses a `JSONPaht` as a selector. See [docs]((https://goessner.net/articles/JsonPath/))
+This plugin uses a `JSONPaht` as a selector. See [docs](https://goessner.net/articles/JsonPath/)
 
 ## Use case
 
-To demonstrate our use case I created a dashboard that can be imported to the Grafana. To import it, go to [http://localhost:3000/dashboard/import](http://localhost:3000/dashboard/import) and paste the json
+To demonstrate our use case I created a dashboard that can be imported to the Grafana. To import it, go to [http://localhost:3000/dashboard/import](http://localhost:3000/dashboard/import) and paste the json. This json is an example of a [compilation target](https://github.com/bobokrut/Sag-Onboarding/blob/main/onboarding-exe.md#grafana-as-a-target) 
 
 <details>
   <summary>Dashboard file</summary>
@@ -357,8 +364,3 @@ After it's done, you should see this
 <img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/0c574d16-f7af-45af-88b7-737e7df12142" width=75% height=75%>
 
 To further explore it, press `e` on your keyboard or select `edit` in the dropdown menu (`Test map` above the map). This visualisation should be understandable but in case of difficulties please contact Egor
-
-# Wrap up
-As a small demo, you can watch this video just to get a general idea of how to work with Grafana. Pay attention to how something can be done and not what can be done this example is not relative to us
-
-[![Video](https://img.youtube.com/vi/EGgtJUjky8w/maxresdefault.jpg)](https://youtu.be/EGgtJUjky8w?si=3BD6cH5Q5Xp9S7DH&t=175)
