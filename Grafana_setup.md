@@ -22,13 +22,7 @@ sudo apt update && sudo apt install unzip
 
 # How to install Grafana
 
-1. Clone the Grafana [repository](https://github.com/Dataskop/SmartCommunities)
-
-```bash
-git clone https://github.com/Dataskop/SmartCommunities.git
-```
-
-2. Download Grafana binary
+1. Download Grafana binary
 
 ```bash
 wget https://dl.grafana.com/enterprise/release/grafana-enterprise-9.3.6.linux-amd64.tar.gz
@@ -36,6 +30,15 @@ tar -zxvf grafana-enterprise-9.3.6.linux-amd64.tar.gz
 ```
 
 > To install other versions of Grafana, select an appropriate version on the [Grafana website](https://grafana.com/grafana/download) and download a **standalone binary**
+
+2. Clone the Grafana [repository](https://github.com/Dataskop/SmartCommunities)
+
+You probably should have a GitHub Desktop to authenticate yourself (thanks to Mr Gambi), but I'm not sure if this method can be applied to WSL. In case you have a problem, you can always [install GitHub Cli](https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian-ubuntu-linux-raspberry-pi-os-apt), create a personal [access token](https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian-ubuntu-linux-raspberry-pi-os-apt) and [login yourself with it](https://cli.github.com/manual/gh_auth_login)
+
+```bash
+git clone https://github.com/Dataskop/SmartCommunities.git
+```
+
 
 3. Copy the downloaded binary to the Grafana repository
 
@@ -359,8 +362,10 @@ To demonstrate our use case I created a dashboard that can be imported to the Gr
   ```
 </details>
 
-After it's done, you should see this
+To select the right source, press `e` on your keyboard or select `edit` in the dropdown menu (`Test map` above the map). 
+
+<img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/b355a9df-fe5b-42bc-9502-720bdf1c9861" width=75% height=75%>
+
+Then click the `Save` and `Apply` buttons. After it's done, you should see this
 
 <img src="https://github.com/bobokrut/Sag-Onboarding/assets/45918782/0c574d16-f7af-45af-88b7-737e7df12142" width=75% height=75%>
-
-To further explore it, press `e` on your keyboard or select `edit` in the dropdown menu (`Test map` above the map). This visualisation should be understandable but in case of difficulties please contact Egor
