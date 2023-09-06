@@ -71,7 +71,7 @@ cd SmartCommunities/grafana-9.3.6_E_DB1/
 # How to setup Grafana 
 The Grafana repository has a lot of branches, but for now, you just need a new local branch (e.g. `imc`). 
 
-> ![NOTE]
+> [!NOTE]
 > This is only needed if you have access to the `SmartCommunities` repository
 
 ## Monaco editor
