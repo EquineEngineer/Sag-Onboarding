@@ -31,14 +31,25 @@ tar -zxvf grafana-enterprise-9.3.6.linux-amd64.tar.gz
 
 > To install other versions of Grafana, select an appropriate version on the [Grafana website](https://grafana.com/grafana/download) and download a **standalone binary**
 
-2. Clone the Grafana [repository](https://github.com/Dataskop/SmartCommunities)
+2. Get the Grafana
+   
+Adding you to the Grafana repository will take some time, so for now, you can download a zip file
+ ```bash
+ wget "https://api.onedrive.com/v1.0/shares/s!AtdQqJMtR9KNnBV0fPi7XYs_8sUV/root/content" -O SmartCommunities-main.zip
+ unzip SmartCommunities-main.zip
+ ```
+<details>
+  <summary>How to clone the repository</summary>
+
+ Clone the Grafana [repository](https://github.com/Dataskop/SmartCommunities)
 
 You probably should have a GitHub Desktop to authenticate yourself (thanks to Mr Gambi), but I'm not sure if this method can be applied to WSL. In case you have a problem, you can always [install GitHub Cli](https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian-ubuntu-linux-raspberry-pi-os-apt), create a personal [access token](https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian-ubuntu-linux-raspberry-pi-os-apt) and [login yourself with it](https://cli.github.com/manual/gh_auth_login)
 
 ```bash
 git clone https://github.com/Dataskop/SmartCommunities.git
 ```
-
+  
+</details>
 
 3. Copy the downloaded binary to the Grafana repository
 
@@ -58,7 +69,10 @@ cd SmartCommunities/grafana-9.3.6_E_DB1/
   Open up your browser under `localhost:3000` and login with default credentials `admin` `admin`. You can skip "new passwords" step
 
 # How to setup Grafana 
-The Grafana repository has a lot of branches, but for now, you just need a new local branch (e.g. `imc`)
+The Grafana repository has a lot of branches, but for now, you just need a new local branch (e.g. `imc`). 
+
+> ![NOTE]
+> This is only needed if you have access to the `SmartCommunities` repository
 
 ## Monaco editor
 At the moment of writing this branch is pretty old, so we need to add one thing - an editor. Some branches have it, such as `develop`, but for `imc` you have to add it manually
